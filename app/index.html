@@ -1,6 +1,6 @@
 <!doctype html>
 <html class="no-js">
-  <head>
+<head>
     <meta charset="utf-8">
     <title></title>
     <meta name="description" content="">
@@ -15,54 +15,81 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
-  </head>
-  <body ng-app="angularjsRestClientApp">
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+</head>
 
-    <!-- Add your site or application content here -->
-    <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-        </ul>
-        <h3 class="text-muted">angularjsRestClient</h3>
-      </div>
+<body ng-app="angularjsRestClientApp">
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
 
-      <div ng-view=""></div>
+<div id="errorMessage" ng-show="errorMessage">
+    <div>
+        <strong>Error!</strong>
+        <br/>{{ errorMessage }}<br/><br/>
+        <button ng-click="errorMessage=null" class="btn btn-danger">OK</button>
+    </div>
+</div>
 
-      <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> footer</p>
-      </div>
+
+<!-- Add your site or application content here -->
+<div class="container">
+    <div class="header">
+        <div class="navbar navbar-default" role="navigation" bs-navbar>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">angularjsRestClient</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li data-match-route="/main"><a ng-href="#">home</a></li>
+                <li data-match-route="/about"><a ng-href="#/about">about</a></li>
+                <li data-match-route="/task"><a ng-href="#/task">task</a></li>
+                <li data-match-route="/language"><a ng-href="#/language">language</a></li>
+            </ul>
+        </div>
+
     </div>
 
 
-    <!-- build:js(.) scripts/oldieshim.js -->
-    <!--[if lt IE 9]>
-    <script src="bower_components/es5-shim/es5-shim.js"></script>
-    <script src="bower_components/json3/lib/json3.js"></script>
-    <![endif]-->
-    <!-- endbuild -->
+    <div class="container" ng-view=""></div>
 
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
+    <ng-include src="'views/footer.html'"></ng-include>
 
-    <script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
-    <script src="bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
+</div>
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <!-- endbuild -->
+
+<!-- build:js(.) scripts/oldieshim.js -->
+<!--[if lt IE 9]>
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/json3/lib/json3.js"></script>
+<![endif]-->
+<!-- endbuild -->
+
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
+<script src="bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
+<script src="bower_components/lodash/dist/lodash.js"></script>
+<script src="bower_components/restangular/dist/restangular.js"></script>
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+
+<script src="scripts/services/taskservice.js"></script>
+
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/about.js"></script>
+<script src="scripts/controllers/task.js"></script>
+<script src="scripts/controllers/language.js"></script>
+<script src="scripts/controllers/footer.js"></script>
+<!-- endbuild -->
 </body>
 </html>
