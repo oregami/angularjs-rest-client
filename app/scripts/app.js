@@ -37,6 +37,14 @@ var app = angular
                 templateUrl: 'views/task.html',
                 controller: 'TaskCtrl'
             })
+            .when('/task/:taskId', {
+                templateUrl: 'views/task.html',
+                controller: 'TaskCtrl'
+            })
+            .when('/task/edit/:taskId', {
+                templateUrl: 'views/taskEdit.html',
+                controller: 'TaskeditCtrl'
+            })
             .when('/language', {
                 templateUrl: 'views/language.html',
                 controller: 'LanguageCtrl'
@@ -48,7 +56,7 @@ var app = angular
 
 app.run(function($rootScope, Restangular) {
     $rootScope.API = "http://localhost:8080";
-    $rootScope.API = "http://192.168.59.103:8080";
+    //$rootScope.API = "http://192.168.59.103:8080";
     Restangular.setBaseUrl($rootScope.API);
     Restangular.setErrorInterceptor(function(response, deferred, responseHandler) {
         return displayError(response, $rootScope);

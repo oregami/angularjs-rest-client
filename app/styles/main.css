@@ -57,6 +57,7 @@ body {
     position: fixed;
     background-color: black;
     z-index: 10000;
+    display: none;
 }
 
 #errorMessage div {
@@ -68,4 +69,19 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 10px;
+
+}
+
+.smallInfo {
+    font-size: 80%;
+    color: #666666;
+}
+
+#debug {
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    width: 300px;
+    border: 1px solid grey;
+    font-size: 8pt;
 }
