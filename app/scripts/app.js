@@ -63,8 +63,8 @@ var app = angular
     });
 
 app.run(function($rootScope, Restangular) {
-    //$rootScope.API = "http://dropwizard-guice-jpa-seed.oregami.org";
-    $rootScope.API = "http://localhost:8080";
+    $rootScope.API = "http://dropwizard-guice-jpa-seed.oregami.org";
+    //$rootScope.API = "http://localhost:8080";
     //$rootScope.API = "http://192.168.59.103:8080";
     Restangular.setBaseUrl($rootScope.API);
     Restangular.setErrorInterceptor(function(response, deferred, responseHandler) {
