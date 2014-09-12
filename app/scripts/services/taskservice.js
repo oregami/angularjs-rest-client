@@ -8,7 +8,7 @@
  * Service in the angularjsRestClientApp.
  */
 angular.module('angularjsRestClientApp')
-  .service('taskService', function taskService(Restangular, $location, $timeout) {
+  .service('taskService', function taskService(Restangular) {
 
         return {
             getAll: function() {
