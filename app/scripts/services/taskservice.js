@@ -23,9 +23,12 @@ angular.module('angularjsRestClientApp')
                 return Restangular.one('task', id).get();
             }
             ,
-
             getTaskRevisionNumbers: function(taskId) {
                 return Restangular.all('task/' +  taskId + "/revisions").getList().$object;
+            }
+            ,
+            getTaskWithRevision: function(taskId, revision) {
+                return Restangular.one('task/' +  taskId + "/revisions/" + revision).get();
             }
 
         }
