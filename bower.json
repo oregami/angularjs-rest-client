@@ -6,6 +6,7 @@
     "json3": "~3.3.1",
     "es5-shim": "~3.1.0",
     "angular-route": "~1.2.0",
+    "angular-sanitize": "~1.2.24",
     "angular-strap": "~2.1.0",
     "restangular": "~1.4.0"
   },
