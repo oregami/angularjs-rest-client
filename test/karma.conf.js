@@ -21,6 +21,10 @@ module.exports = function(config) {
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'bower_components/angular-route/angular-route.js',
+      'bower_components/angular-strap/dist/angular-strap.js',
+      'bower_components/lodash/dist/lodash.compat.js',
+      'bower_components/restangular/dist/restangular.js',
+      'bower_components/angular-sanitize/angular-sanitize.js',
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
       'test/spec/**/*.js'
@@ -30,7 +34,7 @@ module.exports = function(config) {
     exclude: [],
 
     // web server port
-    port: 8080,
+    port: 9080,
 
     // Start these browsers, currently available:
     // - Chrome

@@ -43,7 +43,7 @@ var app = angular
             })
             .when('/task/edit/:taskId', {
                 templateUrl: 'views/taskEdit.html',
-                controller: 'TaskeditCtrl'
+                controller: 'TaskeditCtrl as ctrl'
             })
             .when('/language/:languageId', {
                 templateUrl: 'views/language.html',

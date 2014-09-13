@@ -7,8 +7,8 @@
             <h3 class="panel-title">Task data
                 <span class="smallInfo">id={{selectedTask.id}}</span>
                 &nbsp;&nbsp;&nbsp;
-                <button class="btn btn-success" ng-click="updateTask(selectedTask)">Save</button>
-                <button class="btn btn-warning" ng-click="goBack()">Cancel</button>
+                <button class="btn btn-success" ng-click="ctrl.updateTask(selectedTask)">Save</button>
+                <button class="btn btn-warning" ng-click="ctrl.goBack()">Cancel</button>
 
             </h3>
         </div>
@@ -39,7 +39,7 @@
                 <div class="panel-heading">
                     Subtask
                     <span class="smallInfo">id={{subtask.id}}</span>
-                    <button class="btn btn-default btn-xs" ng-click="removeSubtask(subtask)">
+                    <button class="btn btn-default btn-xs" ng-click="ctrl.removeSubtask(selectedTask, subtask)">
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>
                 </div>
@@ -51,15 +51,15 @@
                 </div>
             </div>
 
-            <button class="btn btn-default btn-xs" ng-click="addSubtask()">
+            <button class="btn btn-default btn-xs" ng-click="ctrl.addSubtask(selectedTask)">
                 <span class="glyphicon glyphicon-plus"></span>
             </button>
 
         </div>
 
         <div class="panel-footer">
-            <button class="btn btn-success" ng-click="updateTask(selectedTask)">Save</button>
-            <button class="btn btn-warning" ng-click="updateTask()">Cancel</button>
+            <button class="btn btn-success" ng-click="ctrl.updateTask(selectedTask)">Save</button>
+            <button class="btn btn-warning" ng-click="ctrl.updateTask()">Cancel</button>
         </div>
     </div>
 

@@ -1,23 +1,22 @@
 'use strict';
 
-describe('Controller: FooterCtrl', function () {
+describe('Controller: PseudocontrollerCtrl', function () {
 
   // load the controller's module
   beforeEach(module('angularjsRestClientApp'));
 
-  var FooterCtrl,
+  var PseudocontrollerCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    FooterCtrl = $controller('FooterCtrl', {
+    PseudocontrollerCtrl = $controller('PseudocontrollerCtrl', {
       $scope: scope
     });
   }));
-  /*
+
   it('should attach a list of awesomeThings to the scope', function () {
     expect(scope.awesomeThings.length).toBe(3);
   });
-  */
 });

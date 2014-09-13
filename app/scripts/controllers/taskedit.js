@@ -10,6 +10,8 @@
 angular.module('angularjsRestClientApp')
   .controller('TaskeditCtrl', function ($scope, $routeParams, taskService, Restangular, $location) {
 
+        var _this = this;
+
         $scope.taskId = $routeParams.taskId;
         $scope.selectedTask = {};
 
@@ -17,22 +19,31 @@ angular.module('angularjsRestClientApp')
             $scope.selectedTask = t;
         });
 
-        $scope.updateTask = function(task) {
+        this.updateTask = function(task) {
             taskService.updateTask(task).then(function(){
-                $scope.goBack();
+                _this.goBack();
             });
         };
 
-        $scope.goBack = function() {
+        this.goBack = function() {
             $location.path("task/" + $scope.taskId);
         }
 
-        $scope.addSubtask = function() {
-            $scope.selectedTask.subTasks.push({});
+        this.addSubtask = function(task) {
+            task.subTasks.push({});
         };
 
-        $scope.removeSubtask = function(subtask) {
-            $scope.selectedTask.subTasks.pop(subtask);
+        this.removeSubtask = function(task, subtask) {
+            console.log("remove subtask id=" + subtask.id + ", description=" + subtask.description);
+            for(var i=0;i<task.subTasks.length;i++){
+                if(task.subTasks[i] == subtask){
+                    console.log("removed: " + task.subTasks[i].description);
+                    task.subTasks.splice(i, 1);
+                } else {
+                    console.log("not removed: " + task.subTasks[i].description);
+                }
+            }
+            console.log("after remove: " + JSON.stringify(task));
         };
 
 
