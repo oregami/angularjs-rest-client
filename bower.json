@@ -13,8 +13,7 @@
   "devDependencies": {
     "angular-mocks": "~1.2.0",
     "angular-scenario": "~1.2.0",
-    "karma": "~0.10",
-    "phantomjs": "~1.9"
+    "karma": "~0.10"
   },
   "appPath": "app"
 }
