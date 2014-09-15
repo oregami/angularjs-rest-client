@@ -14,7 +14,7 @@
     "angular-mocks": "~1.2.0",
     "angular-scenario": "~1.2.0",
     "karma": "~0.10",
-    "karma-phantomjs-launcher": "~0.1"
+    "phantomjs": "~1.9"
   },
   "appPath": "app"
 }
