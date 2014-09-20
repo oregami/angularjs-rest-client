@@ -15,3 +15,7 @@ Currently it has the following features:
 - REST calls with [Restangular](https://github.com/mgonto/restangular)
 - edit task objects, including subtasks (1-n relation)
 - list revisions of task objects and language objects (stored on the server via Hibernate Envers)
+
+# system architecture
+
+![](docs/system_architecture.png?raw=true)
