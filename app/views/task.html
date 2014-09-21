@@ -1,11 +1,19 @@
+<div>isLoading: {{isLoading}}</div>
 
-<div ng-show="selectedTask==null">
+<div ng-show="!taskId">
     <h4>List of all tasks
         <button type="button" class="btn btn-default btn-xs" ng-click="loadTaskList()" style="vertical-align: middle;">
             <span class="glyphicon glyphicon-refresh"></span>
         </button>
     </h4>
-    <table class="table table-striped">
+
+
+    <div ng-show="!taskId && isLoading>0" style="text-align: center;">
+        <img src="images/ajax-loader.gif" style="padding: 10pt;">
+        loading tasks
+    </div>
+
+    <table class="table table-striped" ng-show="!isLoading>0">
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -14,6 +22,7 @@
             <th>#SubTasks</th>
             <th></th>
         </tr>
+
         <tr ng-repeat="task in taskList">
             <td>{{task.id}}</td>
             <td>{{task.name}}</td>
@@ -35,7 +44,12 @@
 </div>
 
 
-<div ng-show="selectedTask">
+<div ng-show="taskId && isLoading>0" style="text-align: center;">
+    <img src="images/ajax-loader.gif" style="padding: 10pt;">
+    loading single task
+</div>
+
+<div ng-show="selectedTask && ! isLoading>0">
 
     <div class="panel panel-default">
         <div class="panel-heading">

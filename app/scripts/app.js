@@ -66,4 +66,13 @@ app.run(function($rootScope, Restangular) {
     Restangular.setErrorInterceptor(function(response, deferred, responseHandler) {
         return displayError(response, $rootScope);
     });
+    $rootScope.isLoading = 0;
+    Restangular.addRequestInterceptor(function(element) {
+        $rootScope.isLoading++;
+        return element;
+    });
+    Restangular.addResponseInterceptor(function(data) {
+        $rootScope.isLoading--;;
+        return data;
+    });
 })
