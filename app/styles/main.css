@@ -49,27 +49,9 @@ body {
   }
 }
 
-
-#errorMessage {
-    opacity: 0.8;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    background-color: black;
-    z-index: 10000;
-    display: none;
-}
-
-#errorMessage div {
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    padding: 10px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 10px;
-
+.error {
+    color: red;
+    padding-left: 10pt;
 }
 
 .smallInfo {

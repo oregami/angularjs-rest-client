@@ -13,16 +13,16 @@ angular.module('angularjsRestClientApp')
         var _this = this;
 
         $scope.taskId = $routeParams.taskId;
-        $scope.selectedTask = {};
+        $scope.task = {};
 
         taskService.getTask($scope.taskId).then(function(t){
-            $scope.selectedTask = t;
+            $scope.task = t;
         });
 
         this.updateTask = function(task) {
             taskService.updateTask(task).then(function(){
                 _this.goBack();
-            });
+            })
         };
 
         this.goBack = function() {
@@ -44,6 +44,24 @@ angular.module('angularjsRestClientApp')
                 }
             }
             console.log("after remove: " + JSON.stringify(task));
+        };
+
+        $scope.getError = function (fieldName, id) {
+            var errors =  $scope.errordata;
+            if (errors!=null) {
+                for (var i = 0; i < errors.length; i++) {
+                    if (typeof errors[i] !='undefined' && errors[i].context.field == fieldName) {
+                        if (id!=null) {
+                            if (id==errors[i].context.id) {
+                                return errors[i].messageName;
+                            }
+                        } else {
+                            return errors[i].messageName;
+                        }
+                    }
+                }
+            }
+            return "";
         };
 
 

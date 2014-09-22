@@ -5,25 +5,28 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Task data
-                <span class="smallInfo">id={{selectedTask.id}}</span>
+                <span class="smallInfo">id={{task.id}}</span>
                 &nbsp;&nbsp;&nbsp;
-                <button class="btn btn-success" ng-click="ctrl.updateTask(selectedTask)">Save</button>
+                <button class="btn btn-success" ng-click="ctrl.updateTask(task)">Save</button>
                 <button class="btn btn-warning" ng-click="ctrl.goBack()">Cancel</button>
 
             </h3>
         </div>
         <div class="panel-body">
             <div class="form-group">
-                <label for="selectedTask.name">name</label>
-                <input type="text" class="form-control" id="selectedTask.name" ng-model="selectedTask.name">
+                <label for="task.name">name</label>
+                <span class="error">{{ getError('task.name')}}</span>
+                <input type="text" class="form-control" id="task.name" ng-model="task.name">
+
             </div>
             <div class="form-group">
-                <label for="selectedTask.description">description</label>
-                <input type="text" class="form-control" id="selectedTask.description" ng-model="selectedTask.description">
+                <label for="task.description">description</label>
+                <span class="error">{{ getError('task.description')}}</span>
+                <input type="text" class="form-control" id="task.description" ng-model="task.description">
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" ng-model="selectedTask.finished"> <strong>finished</strong>
+                    <input type="checkbox" ng-model="task.finished"> <strong>finished</strong>
                 </label>
             </div>
 
@@ -35,30 +38,31 @@
         </div>
         <div class="panel-body">
 
-            <div class="panel panel-info" ng-repeat="subtask in selectedTask.subTasks">
+            <div class="panel panel-info" ng-repeat="subtask in task.subTasks">
                 <div class="panel-heading">
                     Subtask
                     <span class="smallInfo">id={{subtask.id}}</span>
-                    <button class="btn btn-default btn-xs" ng-click="ctrl.removeSubtask(selectedTask, subtask)">
+                    <button class="btn btn-default btn-xs" ng-click="ctrl.removeSubtask(task, subtask)">
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
                         <label for="subtask.description">description</label>
+                        <span class="error">{{ getError('subtask.description', subtask.id)}}</span>
                         <input type="text" class="form-control" id="subtask.description" ng-model="subtask.description">
                     </div>
                 </div>
             </div>
 
-            <button class="btn btn-default btn-xs" ng-click="ctrl.addSubtask(selectedTask)">
+            <button class="btn btn-default btn-xs" ng-click="ctrl.addSubtask(task)">
                 <span class="glyphicon glyphicon-plus"></span>
             </button>
 
         </div>
 
         <div class="panel-footer">
-            <button class="btn btn-success" ng-click="ctrl.updateTask(selectedTask)">Save</button>
+            <button class="btn btn-success" ng-click="ctrl.updateTask(task)">Save</button>
             <button class="btn btn-warning" ng-click="ctrl.updateTask()">Cancel</button>
         </div>
     </div>

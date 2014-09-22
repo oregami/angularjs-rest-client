@@ -25,11 +25,11 @@ angular.module('angularjsRestClientApp')
             $scope.currentRevision = revision;
             if (revision==null) {
                 taskService.getTask($scope.taskId).then(function (t) {
-                    $scope.selectedTask = t;
+                    $scope.task = t;
                 });
             } else {
                 taskService.getTaskWithRevision($scope.taskId, $scope.revision).then(function (t) {
-                    $scope.selectedTask = t;
+                    $scope.task = t;
                 });
             }
 
@@ -47,5 +47,7 @@ angular.module('angularjsRestClientApp')
                 $scope.loadSingleTask($scope.taskId);
             }
         }
+
+
 
   });
