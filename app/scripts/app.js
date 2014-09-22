@@ -64,7 +64,8 @@ app.run(function($rootScope, Restangular) {
     //$rootScope.API = "http://192.168.59.103:8080";
     Restangular.setBaseUrl($rootScope.API);
     Restangular.setErrorInterceptor(function(response, deferred, responseHandler) {
-        return displayError(response, $rootScope);
+        $rootScope.errordata = response.data;
+        return response;
     });
     $rootScope.isLoading = 0;
     Restangular.addRequestInterceptor(function(element) {
