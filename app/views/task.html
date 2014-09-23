@@ -18,6 +18,7 @@
             <th>Description</th>
             <th>Finished</th>
             <th>#SubTasks</th>
+            <th>changed</th>
             <th></th>
         </tr>
 
@@ -27,6 +28,7 @@
             <td>{{task.description}}</td>
             <td>{{task.finished}}</td>
             <td>{{task.subTasks.length}}</td>
+            <td>{{task.changeTimeGui}}</td>
             <td>
                 <a href="#task/{{task.id}}" style="font-size: 60%; vertical-align: top;">
                     <button class="btn btn-default btn-xs">
@@ -94,6 +96,14 @@
                     </td>
                     <td>
                         <span>{{task.finished}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>changed</label>
+                    </td>
+                    <td>
+                        <span>{{task.changeTimeGui}}</span>
                     </td>
                 </tr>
             </table>

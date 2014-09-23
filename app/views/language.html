@@ -10,12 +10,14 @@
             <th>ID</th>
             <th>Name</th>
             <th>Description</th>
+            <th>changed</th>
             <th></th>
         </tr>
         <tr ng-repeat="language in languageList">
             <td>{{language.id}}</td>
             <td>{{language.name}}</td>
             <td>{{language.description}}</td>
+            <td>{{language.changeTimeGui}}</td>
             <td>
                 <a href="#language/{{language.id}}" style="font-size: 60%; vertical-align: top;">
                     <button class="btn btn-default btn-xs">
@@ -62,6 +64,14 @@
                     </td>
                     <td>
                         <span>{{selectedLanguage.description}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>changed</label>
+                    </td>
+                    <td>
+                        <span>{{selectedLanguage.changeTimeGui}}</span>
                     </td>
                 </tr>
             </table>
