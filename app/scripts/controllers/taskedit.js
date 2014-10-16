@@ -8,7 +8,7 @@
  * Controller of the angularjsRestClientApp
  */
 angular.module('angularjsRestClientApp')
-  .controller('TaskeditCtrl', function ($scope, $routeParams, taskService, Restangular, $location) {
+  .controller('TaskeditCtrl', function ($scope, $routeParams, taskService, Restangular, $location, errorService) {
 
         var _this = this;
 
@@ -20,7 +20,7 @@ angular.module('angularjsRestClientApp')
         });
 
         this.updateTask = function(task) {
-            taskService.updateTask(task).then(function(){
+            taskService.updateTask(task).then(function () {
                 _this.goBack();
             })
         };
@@ -30,7 +30,7 @@ angular.module('angularjsRestClientApp')
         }
 
         this.addSubtask = function(task) {
-            task.subTasks.push({});
+            task.subTasks.push({errorId : errorService.errorId()});
         };
 
         this.removeSubtask = function(task, subtask) {
@@ -46,23 +46,9 @@ angular.module('angularjsRestClientApp')
             console.log("after remove: " + JSON.stringify(task));
         };
 
-        $scope.getError = function (fieldName, id) {
-            var errors =  $scope.errordata;
-            if (errors!=null) {
-                for (var i = 0; i < errors.length; i++) {
-                    if (typeof errors[i] !='undefined' && errors[i].context.field == fieldName) {
-                        if (id!=null) {
-                            if (id==errors[i].context.id) {
-                                return errors[i].messageName;
-                            }
-                        } else {
-                            return errors[i].messageName;
-                        }
-                    }
-                }
-            }
-            return "";
-        };
+        $scope.getError = function(fieldName, id, errorId) {
+            return errorService.getError($scope.errordata, fieldName, id, errorId);
+        }
 
 
   });
