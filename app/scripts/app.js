@@ -1,11 +1,5 @@
 'use strict';
 
-function displayError(response, $rootScope) {
-
-    $rootScope.errorMessage = "an error occured. try again. "
-                    + response.status + "/" + response.statusText   ;
-    return false;
-}
 /**
  * @ngdoc overview
  * @name angularjsRestClientApp
@@ -19,10 +13,6 @@ var app = angular
         'ngRoute', 'mgcrea.ngStrap', 'restangular', 'ngSanitize'
     ])
     .config(function ($routeProvider, RestangularProvider) {
-
-        RestangularProvider.setErrorInterceptor(function(response, deferred, responseHandler) {
-            return displayError(response);
-        });
 
         $routeProvider
             .when('/main', {
