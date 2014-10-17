@@ -15,13 +15,13 @@
         <div class="panel-body">
             <div class="form-group">
                 <label for="task.name">name</label>
-                <span class="error">{{ getError('task.name', task.id, task.errorId)}}</span>
+                <span class="error">{{ getError('task.name', task)}}</span>
                 <input type="text" class="form-control" id="task.name" ng-model="task.name">
 
             </div>
             <div class="form-group">
                 <label for="task.description">description</label>
-                <span class="error">{{ getError('task.description')}}</span>
+                <span class="error">{{ getError('task.description', task)}}</span>
                 <input type="text" class="form-control" id="task.description" ng-model="task.description">
             </div>
             <div class="checkbox">
@@ -41,7 +41,7 @@
             <div class="panel panel-info" ng-repeat="subtask in task.subTasks">
                 <div class="panel-heading">
                     Subtask
-                    <span class="smallInfo">id={{subtask.id}}</span>
+                    <span class="smallInfo" ng-show="subtask.id">id={{subtask.id}}</span>
                     <button class="btn btn-default btn-xs" ng-click="ctrl.removeSubtask(task, subtask)">
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>
@@ -49,7 +49,7 @@
                 <div class="panel-body">
                     <div class="form-group">
                         <label for="subtask.description">description</label>
-                        <span class="error">{{ getError('subtask.description', subtask.id, subtask.errorId)}}</span>
+                        <span class="error">{{ getError('subtask.description', subtask)}}</span>
                         <input type="text" class="form-control" id="subtask.description" ng-model="subtask.description">
                     </div>
                 </div>

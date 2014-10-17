@@ -11,16 +11,16 @@ angular.module('angularjsRestClientApp')
   .service('errorService', function errorService() {
 
         return {
-            getError : function (errors, fieldName, id, errorId) {
+            getError : function (errors, fieldName, entity) {
+                var id = entity.id;
+                if (id==null || id == "") {
+                    id = entity.errorId;
+                }
                 if (errors!=null) {
                     for (var i = 0; i < errors.length; i++) {
                         if (typeof errors[i] !='undefined' && errors[i].context.field == fieldName) {
-                            var relevantId = id;
-                            if (id == null) {
-                                relevantId = errorId;
-                            }
-                            if (relevantId!=null) {
-                                if (relevantId==errors[i].context.id) {
+                            if (id!=null) {
+                                if (id==errors[i].context.id) {
                                     return errors[i].messageName;
                                 }
                             } else {

@@ -46,8 +46,8 @@ angular.module('angularjsRestClientApp')
             console.log("after remove: " + JSON.stringify(task));
         };
 
-        $scope.getError = function(fieldName, id, errorId) {
-            return errorService.getError($scope.errordata, fieldName, id, errorId);
+        $scope.getError = function(fieldName, entity) {
+            return errorService.getError($scope.errordata, fieldName, entity);
         }
 
 

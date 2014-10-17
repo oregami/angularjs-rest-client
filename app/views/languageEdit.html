@@ -15,10 +15,12 @@
         <div class="panel-body">
             <div class="form-group">
                 <label for="selectedLanguage.name">name</label>
+                <span class="error">{{ getError('language.name', selectedLanguage)}}</span>
                 <input type="text" class="form-control" id="selectedLanguage.name" ng-model="selectedLanguage.name">
             </div>
             <div class="form-group">
                 <label for="selectedLanguage.description">description</label>
+                <span class="error">{{ getError('language.description', selectedLanguage)}}</span>
                 <input type="text" class="form-control" id="selectedLanguage.description" ng-model="selectedLanguage.description">
             </div>
 

@@ -8,7 +8,7 @@
  * Controller of the angularjsRestClientApp
  */
 angular.module('angularjsRestClientApp')
-  .controller('LanguageeditCtrl', function ($scope, $routeParams, languageService, Restangular, $location) {
+  .controller('LanguageeditCtrl', function ($scope, $routeParams, languageService, Restangular, $location, errorService) {
 
         $scope.languageId = $routeParams.languageId;
         $scope.selectedLanguage = {};
@@ -25,6 +25,10 @@ angular.module('angularjsRestClientApp')
 
         $scope.goBack = function() {
             $location.path("language/" + $scope.languageId);
+        }
+
+        $scope.getError = function(fieldName, entity) {
+            return errorService.getError($scope.errordata, fieldName, entity);
         }
 
 
