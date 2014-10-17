@@ -30,7 +30,7 @@ angular.module('angularjsRestClientApp')
         }
 
         this.addSubtask = function(task) {
-            task.subTasks.push({errorId : errorService.errorId()});
+            task.subTasks.push({validationId : errorService.validationId()});
         };
 
         this.removeSubtask = function(task, subtask) {
