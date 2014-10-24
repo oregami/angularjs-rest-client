@@ -8,7 +8,7 @@ JavaScript REST client for the [dropwizard-guice-jpa-seed](https://github.com/or
 Currently it has the following features:
 
 - created with the [Yeoman generator for AngularJS](https://github.com/yeoman/generator-angular)
-- integrated dependency managament with [npm](https://www.npmjs.org/)/[Bower](http://bower.io/)
+- integrated dependency management with [npm](https://www.npmjs.org/)/[Bower](http://bower.io/)
 - build management with [Grunt](http://gruntjs.com/)
 - JavaScript unit tests with [Karma](http://karma-runner.github.io) (TODO: end2end tests)
 - [live reload](https://github.com/gruntjs/grunt-contrib-watch) of the website during development 
