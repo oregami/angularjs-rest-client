@@ -8,6 +8,6 @@
  * Controller of the angularjsRestClientApp
  */
 angular.module('angularjsRestClientApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function () {
 
   });
