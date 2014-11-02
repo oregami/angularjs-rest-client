@@ -12,6 +12,9 @@ angular.module('angularjsRestClientApp')
 
         return {
             getError : function (errors, fieldName, entity) {
+                if (entity==null) {
+                    return "";
+                }
                 var id = entity.id;
                 if (id==null || id == "") {
                     id = entity.validationId;
