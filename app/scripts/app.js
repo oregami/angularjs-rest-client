@@ -23,6 +23,10 @@ var app = angular
                 templateUrl: 'views/task.html',
                 controller: 'TaskCtrl'
             })
+            .when('/task/new', {
+                templateUrl: 'views/taskEdit.html',
+                controller: 'TaskeditCtrl as ctrl'
+            })
             .when('/task/:taskId', {
                 templateUrl: 'views/task.html',
                 controller: 'TaskCtrl'
@@ -48,6 +52,13 @@ var app = angular
             });
     });
 
+// Restangular service that uses setFullResponse
+app.factory('RestFulResponse', function(Restangular) {
+    return Restangular.withConfig(function(RestangularConfigurer) {
+        RestangularConfigurer.setFullResponse(true);
+    });
+});
+
 app.run(function($rootScope, Restangular) {
     $rootScope.API = "http://dropwizard-guice-jpa-seed.oregami.org";
     //$rootScope.API = "http://localhost:8080";
@@ -63,9 +74,11 @@ app.run(function($rootScope, Restangular) {
         $rootScope.isLoading++;
         return element;
     });
-    Restangular.addResponseInterceptor(function(data) {
+    Restangular.addResponseInterceptor(function(response) {
         $rootScope.isLoading--;
         $rootScope.errordata = null;
-        return data;
+        return response;
     });
-})
+    Restangular.setDefaultHeaders({'Content-Type': 'application/json'});
+
+    });
