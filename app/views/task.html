@@ -1,4 +1,9 @@
 <div ng-show="!taskId">
+
+    <a href="#/task/new">
+        <button class="btn btn-success" style="float: right;">Create new task</button>
+    </a>
+
     <h4>List of all tasks
         <button type="button" class="btn btn-default btn-xs" ng-click="loadTaskList()" style="vertical-align: middle;">
             <span class="glyphicon glyphicon-refresh"></span>
@@ -11,36 +16,42 @@
         loading tasks
     </div>
 
-    <table class="table table-striped" ng-show="!isLoading>0">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Finished</th>
-            <th>#SubTasks</th>
-            <th>changed</th>
-            <th></th>
-        </tr>
+    <div ng-show="!isLoading>0">
 
-        <tr ng-repeat="task in taskList">
-            <td>{{task.id}}</td>
-            <td>{{task.name}}</td>
-            <td>{{task.description}}</td>
-            <td>{{task.finished}}</td>
-            <td>{{task.subTasks.length}}</td>
-            <td>{{task.changeTimeGui}}</td>
-            <td>
-                <a href="#task/{{task.id}}" style="font-size: 60%; vertical-align: top;">
-                    <button class="btn btn-default btn-xs">
-                        <span class="glyphicon glyphicon-eye-open"></span>
-                    </button></a>
-                <a href="#task/edit/{{task.id}}" style="font-size: 60%; vertical-align: top;">
-                    <button class="btn btn-default btn-xs">
-                        <span class="glyphicon glyphicon-edit"></span>
-                    </button></a>
-            </td>
-        </tr>
-    </table>
+        <table class="table table-striped">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Finished</th>
+                <!--<th>#SubTasks</th>-->
+                <th>changed</th>
+                <th></th>
+            </tr>
+
+            <tr ng-repeat="task in taskList">
+                <td><span title="{{task.id}}">{{task.id.substr(task.id.length - 5)}}</span></td>
+                <td>{{task.name}}</td>
+                <td>{{task.description}}</td>
+                <td>{{task.finished}}</td>
+                <!--<td>{{task.subTasks.length}}</td>-->
+                <td>{{task.changeTimeGui}}</td>
+                <td>
+                    <a href="#task/{{task.id}}" style="font-size: 60%; vertical-align: top;">
+                        <button class="btn btn-default btn-xs">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                        </button></a>
+                    <a href="#task/edit/{{task.id}}" style="font-size: 60%; vertical-align: top;">
+                        <button class="btn btn-default btn-xs">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </button></a>
+                    <button class="btn btn-default btn-xs" ng-click="deleteTask(task.id)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
 
 

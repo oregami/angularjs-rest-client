@@ -13,42 +13,50 @@ angular.module('angularjsRestClientApp')
         var _this = this;
 
         $scope.taskId = $routeParams.taskId;
-        $scope.task = {};
+        $scope.task = {'name':'new name', 'id' : null, 'validationId' : errorService.validationId()};
 
-        taskService.getTask($scope.taskId).then(function(t){
-            $scope.task = t;
-        });
+        if ($scope.taskId!=null) {
+            taskService.getTask($scope.taskId).then(function (t) {
+                $scope.task = t;
+            });
+        }
 
         this.updateTask = function(task) {
-            taskService.updateTask(task).then(function () {
-                _this.goBack();
+            taskService.updateTask(task).then(function (ret) {
+                var url = null;
+                if (ret.headers) {
+                    url = ret.headers('Location');
+                }
+                _this.goBack(url);
             })
         };
 
-        this.goBack = function() {
+        this.goBack = function(url) {
+            if (url!=null) {
+                var id = url.split("/").pop();
+                $scope.taskId = id;
+            }
             $location.path("task/" + $scope.taskId);
-        }
+        };
 
         this.addSubtask = function(task) {
+            if (task.subTasks==null) {
+                task.subTasks = [];
+            }
             task.subTasks.push({validationId : errorService.validationId()});
         };
 
         this.removeSubtask = function(task, subtask) {
-            console.log("remove subtask id=" + subtask.id + ", description=" + subtask.description);
             for(var i=0;i<task.subTasks.length;i++){
                 if(task.subTasks[i] == subtask){
-                    console.log("removed: " + task.subTasks[i].description);
                     task.subTasks.splice(i, 1);
-                } else {
-                    console.log("not removed: " + task.subTasks[i].description);
                 }
             }
-            console.log("after remove: " + JSON.stringify(task));
         };
 
         $scope.getError = function(fieldName, entity) {
             return errorService.getError($scope.errordata, fieldName, entity);
-        }
+        };
 
 
   });

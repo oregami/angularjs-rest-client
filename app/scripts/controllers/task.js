@@ -21,7 +21,7 @@ angular.module('angularjsRestClientApp')
         }
 
         $scope.loadSingleTaskWithRevision = function(id, revision) {
-            $scope.revisions = taskService.getTaskRevisionNumbers($scope.taskId);//Restangular.all('task/' +  $scope.taskId + "/revisions").getList().$object;
+            $scope.revisions = taskService.getTaskRevisionNumbers($scope.taskId);
             $scope.currentRevision = revision;
             if (revision==null) {
                 taskService.getTask($scope.taskId).then(function (t) {
@@ -33,6 +33,12 @@ angular.module('angularjsRestClientApp')
                 });
             }
 
+        }
+
+        $scope.deleteTask = function(id) {
+            $scope.revisions = taskService.deleteTask(id).then(function (t) {
+                $scope.loadTaskList();
+            });
         }
 
         if ($scope.taskId==null) {
