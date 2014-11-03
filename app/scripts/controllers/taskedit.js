@@ -36,7 +36,12 @@ angular.module('angularjsRestClientApp')
                 var id = url.split("/").pop();
                 $scope.taskId = id;
             }
-            $location.path("task/" + $scope.taskId);
+            if ($scope.taskId) {
+                $location.path("task/" + $scope.taskId);
+            } else {
+                $location.path("task/");
+            }
+
         };
 
         this.addSubtask = function(task) {
