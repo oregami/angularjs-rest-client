@@ -63,5 +63,7 @@ angular.module('angularjsRestClientApp')
             return errorService.getError($scope.errordata, fieldName, entity);
         };
 
+        $scope.availableLanguages = Restangular.all("language").getList().$object;
+
 
   });
