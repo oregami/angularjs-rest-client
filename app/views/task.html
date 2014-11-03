@@ -36,7 +36,7 @@
                 <td>{{task.finished}}</td>
                 <!--<td>{{task.subTasks.length}}</td>-->
                 <td>{{task.changeTimeGui}}</td>
-                <td>
+                <td><div style="white-space: nowrap;">
                     <a href="#task/{{task.id}}" style="font-size: 60%; vertical-align: top;">
                         <button class="btn btn-default btn-xs">
                             <span class="glyphicon glyphicon-eye-open"></span>
@@ -48,6 +48,7 @@
                     <button class="btn btn-default btn-xs" ng-click="deleteTask(task.id)">
                         <span class="glyphicon glyphicon-trash"></span>
                     </button>
+                    </div>
                 </td>
             </tr>
         </table>
