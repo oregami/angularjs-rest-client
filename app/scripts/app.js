@@ -10,7 +10,7 @@
  */
 var app = angular
     .module('angularjsRestClientApp', [
-        'ngRoute', 'mgcrea.ngStrap', 'restangular', 'ngSanitize'
+        'ngRoute', 'mgcrea.ngStrap', 'restangular', 'ngSanitize', 'LocalStorageModule'
     ])
     .config(function ($routeProvider, RestangularProvider) {
 
@@ -59,6 +59,10 @@ app.factory('RestFulResponse', function(Restangular) {
     });
 });
 
+app.config(function (localStorageServiceProvider) {
+    localStorageServiceProvider
+        .setPrefix('angularjsRestClient');
+});
 app.run(function($rootScope, Restangular) {
     $rootScope.API = "http://dropwizard-guice-jpa-seed.oregami.org";
     //$rootScope.API = "http://localhost:8080";
