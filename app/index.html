@@ -44,6 +44,12 @@
                 <li data-match-route="/task"><a ng-href="#/task">task</a></li>
                 <li data-match-route="/language"><a ng-href="#/language">language</a></li>
             </ul>
+        <div style="text-align: right;margin-right: 10px;">
+            <a href="#/login">
+                <span ng-show="loggedIn">profile</span>
+                <span ng-show="!loggedIn">log in</span>
+            </a>
+        </div>
         </div>
 
     </div>
@@ -95,6 +101,8 @@
 <script src="scripts/services/languageservice.js"></script>
 <script src="scripts/controllers/languageedit.js"></script>
 <script src="scripts/controllers/pseudocontroller.js"></script>
+<script src="scripts/controllers/login.js"></script>
+<script src="scripts/services/loginservice.js"></script>
 <!-- endbuild -->
 </body>
 </html>

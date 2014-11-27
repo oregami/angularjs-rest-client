@@ -47,6 +47,10 @@ var app = angular
                 templateUrl: 'views/languageEdit.html',
                 controller: 'LanguageeditCtrl'
             })
+            .when('/login', {
+              templateUrl: 'views/login.html',
+              controller: 'LoginCtrl as ctrl'
+            })
             .otherwise({
                 redirectTo: '/main'
             });
@@ -84,5 +88,6 @@ app.run(function($rootScope, Restangular) {
         return response;
     });
     Restangular.setDefaultHeaders({'Content-Type': 'application/json'});
+    $rootScope.loggedIn = false;
 
     });
