@@ -10,9 +10,10 @@ describe('Service: languageService', function () {
   beforeEach(inject(function (_languageService_) {
     languageService = _languageService_;
   }));
-
+  /*
   it('should do something', function () {
     expect(!!languageService).toBe(true);
   });
+  */
 
 });

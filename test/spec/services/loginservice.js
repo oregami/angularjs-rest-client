@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: taskService', function () {
+describe('Service: loginService', function () {
 
   // load the service's module
   beforeEach(module('angularjsRestClientApp'));
 
   // instantiate service
-  var taskService;
-  beforeEach(inject(function (_taskService_) {
-    taskService = _taskService_;
+  var loginService;
+  beforeEach(inject(function (_loginService_) {
+    loginService = _loginService_;
   }));
   /*
   it('should do something', function () {
-    expect(!!taskService).toBe(true);
+    expect(!!loginService).toBe(true);
   });
   */
 
