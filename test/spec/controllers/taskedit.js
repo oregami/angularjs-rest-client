@@ -1,16 +1,16 @@
 'use strict';
-/*
+
 describe('Controller: TaskeditCtrl', function () {
 
     // load the controller's module
-    beforeEach(module('angularjsRestClientApp', ['LocalStorageModule']));
+    beforeEach(module('angularjsRestClientApp', 'LocalStorageModule'));
 
     var TaskeditCtrl,
         scope;
 
 
     // Initialize the controller and a mock scope
-    beforeEach(inject(function ($controller, $rootScope, LocalStorageModule) {
+    beforeEach(inject(function ($controller, $rootScope) {
         scope = $rootScope.$new();
         TaskeditCtrl = $controller('TaskeditCtrl', {
             $scope: scope
@@ -45,4 +45,4 @@ describe('Controller: TaskeditCtrl', function () {
     });
 
 });
-*/
+

@@ -1,9 +1,9 @@
 'use strict';
 
 describe('Service: loginService', function () {
-  /*
+
   // load the service's module
-  beforeEach(module('angularjsRestClientApp', ['LocalStorageModule']));
+  beforeEach(module('angularjsRestClientApp', 'LocalStorageModule'));
 
   // instantiate service
   var loginService;
@@ -15,6 +15,6 @@ describe('Service: loginService', function () {
   it('should do something', function () {
     expect(!!loginService).toBe(true);
   });
-  */
+
 
 });

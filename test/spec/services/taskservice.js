@@ -1,9 +1,9 @@
 'use strict';
 
 describe('Service: taskService', function () {
-/*
+
   // load the service's module
-  beforeEach(module('angularjsRestClientApp', ['LocalStorageModule']));
+  beforeEach(module('angularjsRestClientApp', 'LocalStorageModule'));
 
   // instantiate service
   var taskService;
@@ -15,6 +15,6 @@ describe('Service: taskService', function () {
   it('should do something', function () {
     expect(!!taskService).toBe(true);
   });
-*/
+
 });
 

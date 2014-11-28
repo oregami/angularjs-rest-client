@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Controller: TaskCtrl', function () {
-  /*
+
   // load the controller's module
   beforeEach(module('angularjsRestClientApp'));
 
@@ -15,10 +15,5 @@ describe('Controller: TaskCtrl', function () {
       $scope: scope
     });
   }));
-  */
-  /*
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
-  });
-  */
+
 });
