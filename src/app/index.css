@@ -1,0 +1,19 @@
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.thumbnail {
+  height: 120px;
+}
+
+.thumbnail img.pull-right {
+  width: 50px;
+}
+
+.error {
+  color: red;
+  padding-left: 10pt;
+}

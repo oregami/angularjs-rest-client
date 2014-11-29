@@ -1,0 +1,160 @@
+<div ng-show="!taskId">
+
+    <a href="#/task/new">
+        <button class="btn btn-success" style="float: right;">Create new task</button>
+    </a>
+
+    <h4>List of all tasks
+        <button type="button" class="btn btn-default btn-xs" ng-click="loadTaskList()" style="vertical-align: middle;">
+            <span class="glyphicon glyphicon-refresh"></span>
+        </button>
+    </h4>
+
+
+    <div ng-show="!taskId && isLoading>0" style="text-align: center;">
+        <img src="assets/images/ajax-loader.gif" style="padding: 10pt;">
+        loading tasks
+    </div>
+
+    <div ng-show="!isLoading>0">
+
+        <table class="table table-striped">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Finished</th>
+                <!--<th>#SubTasks</th>-->
+                <th>changed</th>
+                <th></th>
+            </tr>
+
+            <tr ng-repeat="task in taskList">
+                <td><span title="{{task.id}}">{{task.id.substr(task.id.length - 5)}}</span></td>
+                <td>{{task.name}}</td>
+                <td>{{task.description}}</td>
+                <td>{{task.finished}}</td>
+                <!--<td>{{task.subTasks.length}}</td>-->
+                <td>{{task.changeTimeGui}}</td>
+                <td><div style="white-space: nowrap;">
+                    <a href="#task/{{task.id}}" style="font-size: 60%; vertical-align: top;">
+                        <button class="btn btn-default btn-xs">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                        </button></a>
+                    <a href="#task/edit/{{task.id}}" style="font-size: 60%; vertical-align: top;">
+                        <button class="btn btn-default btn-xs">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </button></a>
+                    <button class="btn btn-default btn-xs" ng-click="deleteTask(task.id)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+<div ng-show="taskId && isLoading>0" style="text-align: center;">
+    <img src="assets/images/ajax-loader.gif" style="padding: 10pt;">
+    loading single task
+</div>
+
+<div ng-show="task && ! isLoading>0">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Task data
+                <span class="smallInfo">id={{task.id}}</span>
+                <a href="#task/edit/{{taskId}}">
+                    <button class="btn btn-default btn-xs">
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </button></a>
+                <button type="button" class="btn btn-default btn-xs" ng-click="loadSingleTask(taskId)" style="vertical-align: middle;">
+                    <span class="glyphicon glyphicon-refresh"></span>
+                </button>
+            </h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped table-condensed">
+                <tr>
+                    <td>
+                        <label>name</label>
+                    </td>
+                    <td>
+                        <span>{{task.name}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>description</label>
+                    </td>
+                    <td>
+                        <span>{{task.description}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>language</label>
+                    </td>
+                    <td>
+                        <span>{{task.language.name}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>finished</label>
+                    </td>
+                    <td>
+                        <span>{{task.finished}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>changed</label>
+                    </td>
+                    <td>
+                        <span>{{task.changeTimeGui}}</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">SubTasks
+            </h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <tr>
+                    <th>ID</th>
+                    <th>Description</th>
+                </tr>
+                <tr ng-repeat="subtask in task.subTasks">
+                    <td>{{subtask.id}}</td>
+                    <td>{{subtask.description}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <h3 class="panel-title">Revision info
+            </h3>
+        </div>
+        <div class="panel-body">
+            {{revisions}}
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+

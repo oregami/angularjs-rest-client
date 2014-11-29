@@ -1,0 +1,17 @@
+{
+  "name": "angularRest",
+  "version": "0.0.1",
+  "dependencies": {
+    "modernizr": "2.8.x",
+    "angular": "1.3.x",
+    "angular-animate": "1.3.x",
+    "angular-sanitize": "1.3.x",
+    "restangular": "1.3.x",
+    "angular-route": "1.3.x",
+    "angular-local-storage": "0.1.x",
+    "bootstrap": "3.2.x"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.3.x"
+  }
+}

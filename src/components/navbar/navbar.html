@@ -1,0 +1,19 @@
+<div class="header">
+  <div class="navbar navbar-default" role="navigation" bs-navbar ng-controller="NavbarCtrl">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">angularjsRestClient</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li data-match-route="/task"><a ng-href="#/task">task</a></li>
+      <li data-match-route="/language"><a ng-href="#/language">language</a></li>
+    </ul>
+    <div style="text-align: right;margin-right: 10px;">
+      <a href="#/login">
+        <span ng-show="loggedIn">profile</span>
+        <span ng-show="!loggedIn">log in</span>
+      </a>
+    </div>
+  </div>
+
+</div>
+
