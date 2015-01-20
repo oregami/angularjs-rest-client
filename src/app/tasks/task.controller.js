@@ -8,8 +8,7 @@
  * Controller of the angularjsRestClientApp
  */
 angular.module('angularRest')
-  .controller('TaskCtrl', function ($scope, taskService, Restangular, $routeParams, $window) {
-
+  .controller('TaskCtrl', function ($scope, taskService, Restangular, $routeParams) {
 
         $scope.taskId = $routeParams.taskId;
 
@@ -48,7 +47,6 @@ angular.module('angularRest')
             if ($routeParams.revision!=null) {
                 $scope.revision = $routeParams.revision;
                 $scope.loadSingleTaskWithRevision($scope.taskId, $scope.revision);
-                //alert("revision " + $scope.revision);
             } else {
                 $scope.loadSingleTask($scope.taskId);
             }
