@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
 
     <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/angular-motion/dist/angular-motion.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -32,7 +33,8 @@
 
       <div ng-include="'components/navbar/navbar.html'"></div>
 
-      <div ng-view></div>
+      <div ng-view id="content"></div>
+
 
       <div ng-include="'components/footer/footer.html'"></div>
 
@@ -50,6 +52,9 @@
     <script src="../bower_components/restangular/dist/restangular.js"></script>
     <script src="../bower_components/angular-route/angular-route.js"></script>
     <script src="../bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="../bower_components/angular-http-auth/src/http-auth-interceptor.js"></script>
+    <script src="../bower_components/angular-strap/dist/angular-strap.js"></script>
+    <script src="../bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

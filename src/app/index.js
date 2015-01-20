@@ -1,7 +1,15 @@
 'use strict';
 
 var app =
-    angular.module('angularRest', ['ngAnimate', 'ngSanitize', 'restangular', 'ngRoute', 'LocalStorageModule'])
+    angular.module('angularRest', [
+      'ngAnimate',
+      'ngSanitize',
+      'restangular',
+      'ngRoute',
+      'LocalStorageModule',
+      'http-auth-interceptor',
+      'mgcrea.ngStrap'
+    ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -36,11 +44,6 @@ var app =
         templateUrl: 'app/languages/languageEdit.html',
         controller: 'LanguageeditCtrl'
       })
-      .when('/login', {
-        templateUrl: 'app/login/login.html',
-        controller: 'LoginCtrl as ctrl'
-      })
-
 
 
       .otherwise({
@@ -64,7 +67,7 @@ app.config(function (localStorageServiceProvider) {
 });
   */
 
-app.run(function($rootScope, Restangular) {
+app.run(function($rootScope, Restangular, localStorageService) {
   $rootScope.API = 'http://dropwizard-guice-jpa-seed.oregami.org';
   //$rootScope.API = 'http://localhost:8080';
   Restangular.setBaseUrl($rootScope.API);
@@ -77,6 +80,21 @@ app.run(function($rootScope, Restangular) {
   Restangular.addRequestInterceptor(function(element) {
     $rootScope.isLoading++;
     return element;
+  });
+
+  Restangular.addFullRequestInterceptor(function (element, operation, what, url, headers, params, httpConfig) {
+    //console.log('FRI for ' + url + ': ' + (localStorageService.get("token")==null?null:localStorageService.get("token").token));
+    if (localStorageService.get("token") != null) {
+      console.log('auth-header wird gesetzt! \n' + JSON.stringify(localStorageService.get("token")));
+      headers.authorization = "bearer " + localStorageService.get("token").token;
+    }
+    return {
+      element: element,
+      headers: headers,
+      params: params,
+      httpConfig: httpConfig
+    };
+
   });
   Restangular.addResponseInterceptor(function(response) {
     $rootScope.isLoading--;

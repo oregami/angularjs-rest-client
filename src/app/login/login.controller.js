@@ -8,35 +8,76 @@
  * Controller of the angularjsRestClientApp
  */
 angular.module('angularRest')
-    .controller('LoginCtrl', function ($scope, $rootScope, loginService, localStorageService) {
+  .controller('LoginCtrl', function ($scope, $rootScope, loginService, localStorageService, $modal, authService, $http) {
 
-        var _this = this;
-        this.login = function (user) {
-            loginService.login(user).then(function (t) {
-                if (!t || t == null) {
-                    _this.handleLoginError();
-                    return;
-                }
-                $rootScope.loggedIn = true;
-                $rootScope.username = user.username;
-                localStorageService.set("token", t);
-            }, function (response) {
-                console.log("Error with status code", response.status);
-                _this.handleLoginError();
-            });
-        };
+    console.log('LoginCtrl started');
 
-        this.logout = function () {
-            $rootScope.loggedIn = false;
-            localStorageService.remove("token");
-            $rootScope.username = null;
-            $scope.user = null;
-        };
+    var myModal = $modal({scope: $scope, title: 'Login', template: 'app/login/login_modal.html', show: false});
 
-        this.handleLoginError = function() {
-            $rootScope.loggedIn = false;
-            localStorageService.remove("token");
-            $rootScope.username = null;
-            $scope.user = null;
-        };
+    var _this = this;
+
+    function configUpdater(config) {
+      config.headers.authorization = "bearer " + localStorageService.get("token").token;
+      return config;
+    }
+
+    this.login = function (user) {
+      $scope.errorMessage = null;
+      loginService.login(user).then(function (t) {
+        if (!t || t == null) {
+          _this.handleLoginError();
+          return;
+        }
+        $rootScope.loggedIn = true;
+        $rootScope.username = user.username;
+        localStorageService.set("token", t);
+        myModal.hide();
+        authService.loginConfirmed({}, configUpdater);
+      }, function (response) {
+        console.log("Error with status code", response.status);
+        _this.handleLoginError();
+      });
+    };
+
+    this.logout = function () {
+      $rootScope.loggedIn = false;
+      localStorageService.remove("token");
+      $rootScope.username = null;
+      $scope.user = null;
+    };
+
+    this.handleLoginError = function () {
+      console.log('loginError');
+      $rootScope.loggedIn = false;
+      localStorageService.remove("token");
+      $rootScope.username = null;
+      $scope.user = null;
+      $scope.errorMessage = "Error";
+    };
+
+    this.clearError = function() {
+       $scope.errorMessage=null;
+    } ;
+
+
+    $scope.open = function () {
+      myModal.$promise.then(myModal.show);
+    };
+
+    $scope.$on('event:auth-loginRequired', function () {
+      console.log('LoginCtrl: event:auth-loginRequired');
+      $scope.errorMessage = null;
+      myModal.$promise.then(myModal.show);
     });
+    $scope.$on('event:auth-loginConfirmed', function () {
+      console.log('LoginCtrl: event:auth-loginConfirmed');
+    });
+
+    $scope.$on('event:auth-loginCancelled', function () {
+      console.log('LoginCtrl: event:auth-loginCancelled');
+    });
+
+
+
+
+  });
