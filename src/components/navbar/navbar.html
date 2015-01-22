@@ -19,7 +19,15 @@
           <button class="btn btn-primary btn-sm" ng-click="ctrl.login(user)">login</button>
         </span>
       </form>
-      {{username}}
+
+      <span style="color: blue; font-size: 8pt;" ng-show="debug">
+      loggedIn: {{loggedIn}}  ;
+      username: {{username}} ;
+      getUsername(): {{getUsername()}}
+      </span>
+
+      <span ng-show="loggedIn"><strong>{{getUsername()}}</strong></span>
+
       <button ng-show="loggedIn" class="btn btn-danger btn-sm" ng-click="ctrl.logout()">logout</button>
 
     </span>

@@ -45,9 +45,15 @@
                         <button class="btn btn-default btn-xs">
                             <span class="glyphicon glyphicon-edit"></span>
                         </button></a>
-                    <button class="btn btn-default btn-xs" ng-click="deleteTask(task.id)" ng-show="loggedIn">
-                        <span class="glyphicon glyphicon-trash"></span>
-                    </button>
+
+                    <span title="{{ loggedIn ? 'delete' : 'log in first'}}">
+                      <button class="btn btn-default btn-xs"
+                              ng-click="deleteTask(task.id)"
+                              ng-disabled="!loggedIn"
+                        >
+                          <span class="glyphicon glyphicon-trash"></span>
+                      </button>
+                      </span>
                     </div>
                 </td>
             </tr>

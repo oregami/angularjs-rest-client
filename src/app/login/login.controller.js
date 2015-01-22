@@ -8,7 +8,7 @@
  * Controller of the angularjsRestClientApp
  */
 angular.module('angularRest')
-  .controller('LoginCtrl', function ($scope, $rootScope, loginService, localStorageService, $modal, authService, $http) {
+  .controller('LoginCtrl', function ($scope, $rootScope, loginService, localStorageService, $modal, authService) {
 
     console.log('LoginCtrl started');
 
@@ -17,9 +17,14 @@ angular.module('angularRest')
     var _this = this;
 
     function configUpdater(config) {
-      config.headers.authorization = "bearer " + localStorageService.get("token").token;
+      config.headers.authorization = 'bearer ' + localStorageService.get('token').token;
       return config;
     }
+
+    $scope.getUsername = function() {
+      return localStorageService.get('username');
+    };
+    $scope.username = localStorageService.get('username');
 
     this.login = function (user) {
       $scope.errorMessage = null;
@@ -29,30 +34,31 @@ angular.module('angularRest')
           return;
         }
         $rootScope.loggedIn = true;
-        $rootScope.username = user.username;
-        localStorageService.set("token", t);
+        localStorageService.set('token', t);
+        localStorageService.set('username', user.username);
         myModal.hide();
         authService.loginConfirmed({}, configUpdater);
       }, function (response) {
-        console.log("Error with status code", response.status);
+        console.log('Error with status code', response.status);
         _this.handleLoginError();
       });
     };
 
     this.logout = function () {
       $rootScope.loggedIn = false;
-      localStorageService.remove("token");
-      $rootScope.username = null;
+      localStorageService.remove('token');
+      localStorageService.remove('username');
       $scope.user = null;
     };
 
     this.handleLoginError = function () {
       console.log('loginError');
       $rootScope.loggedIn = false;
-      localStorageService.remove("token");
+      localStorageService.remove('token');
+      localStorageService.remove('username');
       $rootScope.username = null;
       $scope.user = null;
-      $scope.errorMessage = "Error";
+      $scope.errorMessage = 'Error';
     };
 
     this.clearError = function() {
