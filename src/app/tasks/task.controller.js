@@ -17,7 +17,7 @@ angular.module('angularRest')
         };
         $scope.loadSingleTask = function(id) {
             $scope.loadSingleTaskWithRevision(id, null);
-        }
+        };
 
         $scope.loadSingleTaskWithRevision = function(id, revision) {
             $scope.revisions = taskService.getTaskRevisionNumbers($scope.taskId);
@@ -32,13 +32,13 @@ angular.module('angularRest')
                 });
             }
 
-        }
+        };
 
         $scope.deleteTask = function(id) {
-            $scope.revisions = taskService.deleteTask(id).then(function (t) {
+            $scope.revisions = taskService.deleteTask(id).then(function () {
                 $scope.loadTaskList();
             });
-        }
+        };
 
         if ($scope.taskId==null) {
             $scope.loadTaskList();

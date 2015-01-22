@@ -28,18 +28,18 @@ angular.module('angularRest')
                     url = ret.headers('Location');
                 }
                 _this.goBack(url);
-            })
+            });
         };
 
         this.goBack = function(url) {
             if (url!=null) {
-                var id = url.split("/").pop();
+                var id = url.split('/').pop();
                 $scope.taskId = id;
             }
             if ($scope.taskId) {
-                $location.path("task/" + $scope.taskId);
+                $location.path('task/' + $scope.taskId);
             } else {
-                $location.path("task/");
+                $location.path('task/');
             }
 
         };
@@ -63,7 +63,7 @@ angular.module('angularRest')
             return errorService.getError($scope.errordata, fieldName, entity);
         };
 
-        $scope.availableLanguages = Restangular.all("language").getList().$object;
+        $scope.availableLanguages = Restangular.all('language').getList().$object;
 
 
   });

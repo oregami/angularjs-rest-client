@@ -31,12 +31,12 @@ angular.module('angularRest')
                 return Restangular.one('task', id).remove();
             },
             getTaskRevisionNumbers: function(taskId) {
-                return Restangular.all('task/' +  taskId + "/revisions").getList().$object;
+                return Restangular.all('task/' +  taskId + '/revisions').getList().$object;
             },
             getTaskWithRevision: function(taskId, revision) {
-                return Restangular.one('task/' +  taskId + "/revisions/" + revision).get();
+                return Restangular.one('task/' +  taskId + '/revisions/' + revision).get();
             }
 
-        }
+        };
 
   });

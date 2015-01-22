@@ -24,12 +24,12 @@ angular.module('angularRest')
         };
 
         $scope.goBack = function() {
-            $location.path("language/" + $scope.languageId);
-        }
+            $location.path('language/' + $scope.languageId);
+        };
 
         $scope.getError = function(fieldName, entity) {
             return errorService.getError($scope.errordata, fieldName, entity);
-        }
+        };
 
 
 

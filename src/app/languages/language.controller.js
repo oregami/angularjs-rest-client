@@ -17,10 +17,10 @@ angular.module('angularRest')
         };
         $scope.loadSingleLanguage = function(id) {
             $scope.loadSingleLanguageWithRevision(id, null);
-        }
+        };
 
         $scope.loadSingleLanguageWithRevision = function(id, revision) {
-            $scope.revisions = languageService.getLanguageRevisionNumbers($scope.languageId);//Restangular.all('language/' +  $scope.languageId + "/revisions").getList().$object;
+            $scope.revisions = languageService.getLanguageRevisionNumbers($scope.languageId);
             $scope.currentRevision = revision;
             if (revision==null) {
                 languageService.getLanguage($scope.languageId).then(function (t) {
@@ -32,7 +32,7 @@ angular.module('angularRest')
                 });
             }
 
-        }
+        };
 
         if ($scope.languageId==null) {
             $scope.loadLanguageList();

@@ -17,20 +17,17 @@ angular.module('angularRest')
             updateLanguage: function(language) {
                 var ret = language.put();
                 return ret;
-            }
-            ,
+            },
             getLanguage: function(id) {
                 return Restangular.one('language', id).get();
-            }
-            ,
+            },
             getLanguageRevisionNumbers: function(languageId) {
-                return Restangular.all('language/' +  languageId + "/revisions").getList().$object;
-            }
-            ,
+                return Restangular.all('language/' +  languageId + '/revisions').getList().$object;
+            },
             getLanguageWithRevision: function(languageId, revision) {
-                return Restangular.one('language/' +  languageId + "/revisions/" + revision).get();
+                return Restangular.one('language/' +  languageId + '/revisions/' + revision).get();
             }
 
-        }
+        };
 
   });

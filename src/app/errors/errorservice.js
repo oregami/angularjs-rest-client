@@ -13,10 +13,10 @@ angular.module('angularRest')
         return {
             getError : function (errors, fieldName, entity) {
                 if (entity==null) {
-                    return "";
+                    return '';
                 }
                 var id = entity.id;
-                if (id==null || id == "") {
+                if (id==null || id == '') {
                     id = entity.validationId;
                 }
                 if (errors!=null) {
@@ -32,7 +32,7 @@ angular.module('angularRest')
                         }
                     }
                 }
-                return "";
+                return '';
             } ,
 
             validationId : function() {
@@ -42,6 +42,6 @@ angular.module('angularRest')
                 });
             }
 
-        }
+        };
 
   });
