@@ -7,7 +7,7 @@
       <li data-match-route="/task"><a ng-href="#/task">task</a></li>
       <li data-match-route="/language"><a ng-href="#/language">language</a></li>
     </ul>
-    <div style="text-align: right;margin-right: 10px; margin-top: 5px;">
+    <div style="text-align: right;margin-right: 100px; margin-top: 5px;">
 
     <span ng-controller="LoginCtrl as ctrl">
       <form class="form-inline">
@@ -16,7 +16,7 @@
           <input type="text" ng-change="ctrl.clearError()" class="form-control" id="user.username" ng-model="user.username" placeholder="username">
           <input type="password" ng-change="ctrl.clearError()" class="form-control" id="user.password" ng-model="user.password"
                  placeholder="password">
-          <button class="btn btn-primary btn-sm" ng-click="ctrl.login(user)">login</button>
+          <button id="button.login" class="btn btn-primary btn-sm" ng-click="ctrl.login(user)">login</button>
         </span>
       </form>
 
@@ -26,9 +26,9 @@
       getUsername(): {{getUsername()}}
       </span>
 
-      <span ng-show="loggedIn"><strong>{{getUsername()}}</strong></span>
+      <span ng-show="loggedIn" id="username"><strong>{{getUsername()}}</strong></span>
 
-      <button ng-show="loggedIn" class="btn btn-danger btn-sm" ng-click="ctrl.logout()">logout</button>
+      <button ng-show="loggedIn" class="btn btn-danger btn-sm" ng-click="ctrl.logout()" id="button.logout">logout</button>
 
     </span>
 
