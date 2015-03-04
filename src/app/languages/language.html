@@ -19,14 +19,23 @@
             <td>{{language.description}}</td>
             <td>{{language.changeTimeGui}}</td>
             <td>
-                <a href="#language/{{language.id}}" style="font-size: 60%; vertical-align: top;">
-                    <button class="btn btn-default btn-xs">
-                        <span class="glyphicon glyphicon-eye-open"></span>
-                    </button></a>
-                <a href="#language/edit/{{language.id}}" style="font-size: 60%; vertical-align: top;">
-                    <button class="btn btn-default btn-xs">
-                        <span class="glyphicon glyphicon-edit"></span>
-                    </button></a>
+              <span title="view">
+                <a href="#language/{{language.id}}"
+                   class="btn btn-default btn-xs"
+                  >
+                  <span class="glyphicon glyphicon-eye-open"></span>
+                </a>
+              </span>
+
+              <span title="{{ loggedIn ? 'edit' : 'log in first'}}">
+                <a href="#language/edit/{{language.id}}"
+                   class="btn btn-default btn-xs"
+                   ng-disabled="!loggedIn"
+                  >
+                  <span class="glyphicon glyphicon-edit"></span>
+                </a>
+              </span>
+
             </td>
         </tr>
     </table>
@@ -39,10 +48,14 @@
         <div class="panel-heading">
             <h3 class="panel-title">Language data
                 <span class="smallInfo">id={{selectedLanguage.id}}</span>
-                <a href="#language/edit/{{languageId}}">
-                    <button class="btn btn-default btn-xs">
-                        <span class="glyphicon glyphicon-edit"></span>
-                    </button></a>
+                <span title="{{ loggedIn ? 'edit' : 'log in first'}}">
+                  <a href="#language/edit/{{languageId}}"
+                     class="btn btn-default btn-xs"
+                     ng-disabled="!loggedIn"
+                    >
+                    <span class="glyphicon glyphicon-edit"></span>
+                  </a>
+                </span>
                 <button type="button" class="btn btn-default btn-xs" ng-click="loadSingleLanguage(languageId)" style="vertical-align: middle;">
                     <span class="glyphicon glyphicon-refresh"></span>
                 </button>
@@ -88,4 +101,4 @@
         </div>
     </div>
 
-</div>        
+</div>
