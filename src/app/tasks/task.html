@@ -176,7 +176,9 @@
       </h3>
     </div>
     <div class="panel-body">
-      {{revisions}}
+      <div ng-repeat="rev in revisions">
+        {{rev.n}} : {{ rev.value }}
+      </div>
     </div>
   </div>
 
