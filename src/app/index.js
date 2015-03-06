@@ -44,6 +44,10 @@ var app =
         templateUrl: 'app/languages/languageEdit.html',
         controller: 'LanguageeditCtrl'
       })
+      .when('/revisions', {
+        templateUrl: 'app/revisions/revisions.html',
+        controller: 'RevisionsCtrl'
+      })
 
 
       .otherwise({
@@ -60,19 +64,13 @@ app.factory('RestFulResponse', function(Restangular) {
   });
 });
 
-/*
-app.config(function (localStorageServiceProvider) {
-  localStorageServiceProvider
-    .setPrefix('angularjsRestClient');
-});
-  */
 
 app.run(function($rootScope, Restangular, localStorageService) {
 
   $rootScope.debug=false;
 
   $rootScope.API = 'http://dropwizard-guice-jpa-seed.oregami.org';
-  //$rootScope.API = 'http://localhost:8080';
+  $rootScope.API = 'http://localhost:8080';
 
   Restangular.setBaseUrl($rootScope.API);
   Restangular.setErrorInterceptor(function(response) {
@@ -85,7 +83,6 @@ app.run(function($rootScope, Restangular, localStorageService) {
     $rootScope.isLoading++;
     return element;
   });
-
 
   Restangular.addFullRequestInterceptor(function (element, operation, what, url, headers, params, httpConfig) {
     //console.log('FRI for ' + url + ': ' + (localStorageService.get("token")==null?null:localStorageService.get("token").token));
@@ -111,4 +108,5 @@ app.run(function($rootScope, Restangular, localStorageService) {
   if (localStorageService.get('token') != null) {
     $rootScope.loggedIn = true;
   }
+
 });
