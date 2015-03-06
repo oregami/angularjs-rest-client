@@ -17,11 +17,6 @@ angular.module('angularRest')
     $scope.loadRevisionsList();
 
     $scope.getDate = function(timestamp) {
-      //var s = new Date(timestamp).toISOString();
-      //var s = new Date(timestamp).toDateString();
-      //var s = new Date(timestamp).toLocaleDateString();
-      //var s2 = new Date(timestamp).toLocaleTimeString();
-      //return s + ' ' + s2;
       return moment(timestamp).format('YYYY-MM-DD HH:mm');
     }
 
