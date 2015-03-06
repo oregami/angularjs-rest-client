@@ -70,7 +70,7 @@ app.run(function($rootScope, Restangular, localStorageService) {
   $rootScope.debug=false;
 
   $rootScope.API = 'http://dropwizard-guice-jpa-seed.oregami.org';
-  $rootScope.API = 'http://localhost:8080';
+  //$rootScope.API = 'http://localhost:8080';
 
   Restangular.setBaseUrl($rootScope.API);
   Restangular.setErrorInterceptor(function(response) {
