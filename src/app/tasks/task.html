@@ -176,9 +176,31 @@
       </h3>
     </div>
     <div class="panel-body">
-      <div ng-repeat="rev in revisions">
-        {{rev.n}} : {{ rev.value }}
-      </div>
+      <table class="table table-striped">
+        <tr>
+          <th>ID</th>
+          <th>Time</th>
+          <th>User</th>
+          <th>changed entities</th>
+        </tr>
+
+        <tr ng-repeat="revObject in revisions">
+          <td>
+            {{revObject.value.id}}
+          </td>
+          <td>
+            {{getDate(revObject.value.revisionDate)}}
+          </td>
+          <td>
+            {{revObject.value.userId == null ? '-' : revObject.value.userId}}
+          </td>
+          <td>
+            <div ng-repeat="name in revObject.value.modifiedEntityNames">
+              {{ name }}
+            </div>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 
